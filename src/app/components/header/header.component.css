@@ -1,0 +1,12 @@
+.vertical-line {
+    border-left: 1px solid white; /* Línea vertical */
+    height: 40px; /* Altura de la línea */
+    margin: 0 15px; /* Espaciado alrededor de la línea */
+  }
+  .icono-izquierda {
+    margin-right: 20px;
+    }
+.custom-navbar {
+    background-color: #353A40;
+    border-bottom: 5px solid #dc3546;
+  }
