@@ -11,6 +11,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProductoService } from './services/producto.service';
+import { SitioService } from './services/sitio.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,7 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SitioService,ProductoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
