@@ -23,8 +23,8 @@
       </div>
       
       <div class="form-group mt-4">
-        <button type="button" class="btn btn-cancel" id="cancelButton" style="margin-right: 5px;">Cancelar</button>
-        <button type="submit" [disabled]="!productoForm.form.valid" class="btn btn-save" style="margin-right: 5px;">Guardar lista</button>
+        <button type="button" class="btn btn-cancel" id="cancelButton" style="margin-right: 5px;" (click) = 'cancelar()'>Cancelar</button>
+        <button type="submit" [disabled]="!productoForm.form.valid || !productoAgregado" class="btn btn-save" style="margin-right: 5px;">Guardar lista</button>
         <button type="button" class="btn btn-secondary" (click)="agregarProducto()">Agregar Producto</button>
     </div>
     </form>

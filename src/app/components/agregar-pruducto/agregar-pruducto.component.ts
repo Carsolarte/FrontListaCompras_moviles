@@ -15,6 +15,7 @@ export class AgregarPruductoComponent implements OnInit{
   public productos: ProductoModel[] = [];
   public sitios:SitioModel[] = [];
   public objSitioSeleccionado:SitioModel = new SitioModel();
+  public productoAgregado: boolean = false; 
 
   ngOnInit(): void {
     this.obtenerSitios();
@@ -22,6 +23,7 @@ export class AgregarPruductoComponent implements OnInit{
 
   agregarProducto() {
     this.productos.push(new ProductoModel());
+    this.productoAgregado = true;
   }
 
   obtenerSitios(){
@@ -29,7 +31,10 @@ export class AgregarPruductoComponent implements OnInit{
       sitios => this.sitios = sitios
     );
   }
-
+  cancelar(){
+    this.objRouter.navigate(['/listaProductos']);
+  
+  }
   sitioSeleccionado(event: any, index: number) {
     this.productos[index].id_place = event.target.value;
   }
