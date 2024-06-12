@@ -12,31 +12,44 @@ import Swal from 'sweetalert2';
 })
 export class AgregarPruductoComponent implements OnInit{
   constructor(private objRouter:Router, private objServiceProducto:ProductoService,private objServiceSitio:SitioService){}
-  public producto: ProductoModel = new ProductoModel();
+  public productos: ProductoModel[] = [];
   public sitios:SitioModel[] = [];
-  opcionSeleccionada: number = 0;
   public objSitioSeleccionado:SitioModel = new SitioModel();
 
   ngOnInit(): void {
     this.obtenerSitios();
   }
 
- 
+  agregarProducto() {
+    this.productos.push(new ProductoModel());
+  }
+
   obtenerSitios(){
     this.objServiceSitio.getSitios().subscribe(
       sitios => this.sitios = sitios
     );
   }
 
-  
-  sitioSeleccionado(opSeleccionada: number): void {
-    console.log('ID seleccionado:', this.opcionSeleccionada);
-    this.opcionSeleccionada = opSeleccionada;
-    this.objSitioSeleccionado = this.sitios.find(item => item.id_place === opSeleccionada) || new SitioModel();
-    console.log('Sitio seleccionado:', this.objSitioSeleccionado.name_place);
+  sitioSeleccionado(event: any, index: number) {
+    this.productos[index].id_place = event.target.value;
   }
   irAgregarSitio(){
     this.objRouter.navigate(['/agregarSitio']);
+  }
+  guardar() {
+    console.log('Productos guardados:', this.productos);
+    this.objServiceProducto.agregarProductos(this.productos).subscribe(
+      response => {
+        this.objRouter.navigate(['/listaProductos']);
+        console.log(response);
+        Swal.fire('Nuevo lista', `Lista de productos registrada con éxito!`, 'success');
+      },
+      err => {
+        console.error(err);
+        this.objRouter.navigate(['/listaProductos']);
+        Swal.fire('Error', 'No se pudo registrar la lista de productos', 'error');
+      }
+    );
   }
  
 }

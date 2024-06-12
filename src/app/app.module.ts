@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductoService } from './services/producto.service';
 import { SitioService } from './services/sitio.service';
+import { ListaService } from './services/lista.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { SitioService } from './services/sitio.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [SitioService,ProductoService],
+  providers: [SitioService,ProductoService,ListaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

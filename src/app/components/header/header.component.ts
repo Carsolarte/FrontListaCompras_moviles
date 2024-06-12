@@ -14,4 +14,7 @@ export class HeaderComponent {
   irAgregarSitio(){
     this.objRouter.navigate(['/agregarSitio']);
   }
+  irListas(){
+    this.objRouter.navigate(['/listaProductos']);
+  }
 }
