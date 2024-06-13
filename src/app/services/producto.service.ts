@@ -23,4 +23,16 @@ export class ProductoService {
       })
       );
   }
+  eliminarProducto(id:number):Observable<Boolean>{
+    return this.http.delete<Boolean>(this.urlEndPoint+id).pipe(
+        catchError(
+          e => {
+            if (e.status == 400) {
+              return throwError(e);
+            }
+            console.log(e.error.mensaje);
+            return throwError(e);
+        })
+      );
+  }
 }

@@ -16,6 +16,7 @@
                               <th scope="col">ID Producto</th>
                               <th scope="col">Nombre del Producto</th>
                               <th scope="col">Nombre Lugar</th>
+                              <th scope = "col">Accion</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -23,6 +24,7 @@
                               <td>{{ producto.id_product }}</td>
                               <td>{{ producto.name_product }}</td>
                               <td>{{ obtenerNombreSitio(producto.id_place) }}</td>
+                              <td><button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.id_product)">Eliminar</button>
                           </tr>
                       </tbody>
                   </table>
