@@ -49,24 +49,27 @@ export class MostrarListaComponent implements OnInit{
   eliminarProducto(id: number) {
     this.objProductoService.eliminarProducto(id).subscribe(
       response => {
-        this.objRouter.navigate(['/listaProductos']);
-        console.log(response);
         Swal.fire({
           title: 'Producto Eliminado',
           text: 'El producto ha sido eliminado exitosamente.',
           icon: 'success',
           confirmButtonText: 'OK'
+        }).then(() => {
+          // Recargar la página después de mostrar la alerta
+          location.reload();
         });
       },
       error => {
         console.error(error);
-        this.objRouter.navigate(['/listaProductos']);
         // Muestra una alerta de error en caso de que falle la eliminación
         Swal.fire({
           title: 'Error',
           text: 'Hubo un problema al eliminar el producto.',
           icon: 'error',
           confirmButtonText: 'OK'
+        }).then(() => {
+          // Recargar la página después de mostrar la alerta de error
+          location.reload();
         });
       }
     );
