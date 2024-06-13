@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Agregar Producto</h2>
+    <form #productoForm="ngForm" (ngSubmit)="guardar()">
+      <div *ngFor="let producto of listaProductos; let i = index" class="form-group">
+        <label for="productName-{{i}}">Nombre del Producto</label>
+        <input type="text" class="form-control" name="productName-{{i}}" placeholder="Ingrese nombre del producto"
+          [(ngModel)]="producto.name_product" required #productName="ngModel">
+        <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" style="color: rgb(194, 94, 94);">
+          <div *ngIf="productName.errors?.['required']">El nombre del producto es requerido</div>
+        </div>
+  
+        <label for="siteSelect-{{i}}">Seleccionar Sitio</label>
+        <div class="d-flex">
+          <select class="form-select" aria-label="Default select example" name="siteSelect-{{i}}" [(ngModel)]="producto.id_place"
+            (ngModelChange)="sitioSeleccionado($event, i)">
+            <option *ngFor="let sitio of sitios" [value]="sitio.id_place">
+              {{ sitio.name_place }}
+            </option>
+          </select>
+          <button type="button" class="btn btn-primary ml-2" (click)="irAgregarSitio()"><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      
+      <div class="form-group mt-4">
+        <button type="button" class="btn btn-cancel" id="cancelButton" style="margin-right: 5px;" (click)="cancelar()">Cancelar</button>
+        <button type="submit" [disabled]="!productoForm.form.valid" class="btn btn-save" style="margin-right: 5px;">Guardar lista</button>
+        <button type="button" class="btn btn-secondary" (click)="agregarProducto()">Agregar Producto</button>
+      </div>
+    </form>
+  </div>

@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductoService } from './services/producto.service';
 import { SitioService } from './services/sitio.service';
 import { ListaService } from './services/lista.service';
+import { AgregarProductoExistenteComponent } from './components/agregar-producto-existente/agregar-producto-existente.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ListaService } from './services/lista.service';
     MostrarListaComponent,
     NavigationComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    AgregarProductoExistenteComponent
   ],
   imports: [
     BrowserModule,

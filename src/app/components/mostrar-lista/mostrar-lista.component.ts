@@ -3,6 +3,7 @@ import { ListaModel } from 'src/app/models/ListaModel';
 import { SitioModel } from 'src/app/models/SitioModel';
 import { ListaService } from 'src/app/services/lista.service';
 import { SitioService } from 'src/app/services/sitio.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-mostrar-lista',
   templateUrl: './mostrar-lista.component.html',
@@ -12,7 +13,7 @@ export class MostrarListaComponent implements OnInit{
   public listas:ListaModel[] = [];
   public sitios:SitioModel[] = [];
   public sitioDiccionario: { [key: number]: string } = {};
-  constructor(private objListaService: ListaService,private objServiceSitio:SitioService) { }
+  constructor(private objListaService: ListaService,private objServiceSitio:SitioService, private objRouter:Router) { }
   ngOnInit(): void {
     this.getListas();
     this.obtenerSitios();
@@ -39,5 +40,8 @@ export class MostrarListaComponent implements OnInit{
     this.objListaService.getListas().subscribe(
       listas => this.listas = listas
     );
+  }
+  duplicarLista(id:number){
+    this.objRouter.navigate(['/agregarSitio',id]);
   }
 }

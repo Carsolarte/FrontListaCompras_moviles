@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ListaModel } from '../models/ListaModel';
+import { ProductoListaModel } from '../models/PruductoLista';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,5 +12,9 @@ export class ListaService {
   constructor(private http:HttpClient) { }
   getListas(): Observable<ListaModel[]>{
       return this.http.get<ListaModel[]>(this.urlEndPoint);
+  }
+  getListaById(id:number): Observable<ProductoListaModel[]>{
+    console.log(this.urlEndPoint+id);
+    return this.http.get<ProductoListaModel[]>(this.urlEndPoint+id);
   }
 }
