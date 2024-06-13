@@ -1,0 +1,19 @@
+.btn-save {
+    background-color: #1b467a;
+    color: white;
+}
+.btn-cancel {
+    background-color: red;
+    color: white;
+}
+.form-group mt-4 {
+    margin-top: 20px;
+    
+}
+.form-group  {
+  margin: 10px ;
+    
+}
+.btn-cancel {
+    margin-left: 10px; 
+}

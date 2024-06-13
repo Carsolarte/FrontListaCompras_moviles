@@ -9,12 +9,13 @@ import { ProductoListaModel } from '../models/PruductoLista';
 export class ListaService {
   private urlEndPoint:string = 'http://localhost:3000/api/list/products/';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private urlEndPointPrd:string = 'http://localhost:3000/api/products/';
   constructor(private http:HttpClient) { }
   getListas(): Observable<ListaModel[]>{
       return this.http.get<ListaModel[]>(this.urlEndPoint);
   }
   getListaById(id:number): Observable<ProductoListaModel[]>{
     console.log(this.urlEndPoint+id);
-    return this.http.get<ProductoListaModel[]>(this.urlEndPoint+id);
+    return this.http.get<ProductoListaModel[]>(this.urlEndPointPrd+id);
   }
 }
